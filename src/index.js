@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
-import { Provider } from "react-redux";
+import { connect, Provider } from "react-redux";
 import store from './store';
 
 class App extends Component{
 
     constructor(){
         super();
-        this.state = {
-            places: []
-        };
-
+        //this.state = store.getState();
         this.create = this.create.bind(this);
     } 
 
     async componentDidMount(){
-        const places = (await axios.get('/api/places')).data;
-        this.setState({places});
+        // const places = (await axios.get('/api/places')).data;
+        // this.setState({places});
+
+        await this.props.startUp();
     }
 
     async create(){
@@ -26,20 +25,23 @@ class App extends Component{
 
         const newPlace = {name: placeName, description: placeDescription};
 
-        const place = (await axios.post('/api/places', newPlace)).data;
-        const places = [...this.state.places,place];
-        this.setState({places});
+        // const place = (await axios.post('/api/places', newPlace)).data;
+        // const places = [...this.state.places,place];
+        // this.setState({places});
 
+        await this.props.create(newPlace);
     }
 
     async destroy(place){
-        await axios.delete(`/api/place/${place.id}`);
-        const places = this.state.places.filter(_place=>_place.id !==place.id);
-        this.setState({places});
+        // await axios.delete(`/api/place/${place.id}`);
+        // const places = this.state.places.filter(_place=>_place.id !==place.id);
+        // this.setState({places});
+
+        await this.props.delete(place);
     }
 
     render(){
-        const places = this.state.places;
+        const places = this.props.places;
 
         return(
             <><div>
@@ -65,4 +67,34 @@ class App extends Component{
     };
 }
 
-render(<Provider store={store}><App/></Provider>, document.querySelector('#root'));
+
+const _App = connect(
+    state => state,
+    (dispatch)=>{
+        return{
+            startUp: async()=>{
+                const places = (await axios.get('/api/places')).data;
+                dispatch({
+                    type: 'LOAD',
+                    places
+                })
+            },
+            create: async(newPlace)=>{
+                const place = (await axios.post('/api/places', newPlace)).data;
+                dispatch({ 
+                    type: 'CREATE',
+                    place
+                })
+            },
+            delete: async(place)=>{
+                await axios.delete(`/api/place/${place.id}`);
+                dispatch({
+                    type: 'DELETE',
+                    place
+                })
+            }
+        }
+    }
+)(App);
+
+render(<Provider store={store}><_App/></Provider>, document.querySelector('#root'));

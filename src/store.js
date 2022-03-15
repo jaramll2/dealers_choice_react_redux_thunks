@@ -1,35 +1,30 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import axios from 'axios';
+//import thunk from 'redux-thunk';
+//import axios from 'axios';
 
-//action type
-const LOAD = 'LOAD';
-
-//reducer
-const reducer = (state=[],action)=>{
-    if(action.type === 'LOAD'){
-        return action.places;
-    }
-
-    return state;
+const initialState = {
+    places: []
 }
 
-//create store
-const store = createStore(reducer,applyMiddleware(thunk));
+const LOAD = 'LOAD';
+const CREATE = 'CREATE';
+const DELETE = 'DELETE';
 
-// const load = ()=> {
-//     return async(dispatch)=>{
-//       const places = (await axios.get('/api/places')).data;
-      
-//       return dispatch({
-//         type: 'LOAD',
-//         places: places
-//       });
-//     }
-//   };
+const reducer = (state = initialState,action)=>{
+    if(action.type === LOAD){
+        state = {...state, places: action.places};
+    }
+    if(action.type === CREATE){
+        state = {...state, places: [...state.places, action.place]};
+    }
+    if(action.type === DELETE){
+        const places = state.places.filter(_place=>_place.id !==action.place.id);
+        state = {...state,places};
+    }
+    return state;
+};
+
+//create store
+const store = createStore(reducer);
 
 export default store;
-
-// export{
-//     load,
-// }
