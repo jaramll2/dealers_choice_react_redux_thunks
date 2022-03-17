@@ -35,7 +35,7 @@ class App extends Component{
                 
                     {places.map(place => {
                         return (<span className='place' key={place.id}> {place.name} <br></br> 
-                            <button onClick={()=> this.destroy(place)}>Proven Not Haunted - Remove</button>
+                            <button className='removeButton' onClick={()=> this.destroy(place)}>Proven Not Haunted - Remove</button>
                          </span>);
                     })}
                
@@ -44,10 +44,10 @@ class App extends Component{
             <div id="form">
                 <form>
                     <label htmlFor='name'>Location: </label><br></br>
-                    <input type='text' id='name' name ='name'></input><br></br>
+                    <input className ='inputBox'type='text' id='name' name ='name'></input><br></br>
                     <label htmlFor="description">Quick Summary:</label><br></br>
-                    <input type="text" id="description" name="description"></input><br></br>
-                    <input type="button" value='Want To Add A Haunted Location?' onClick={this.create}></input>
+                    <input className ='inputBox'type="text" id="description" name="description"></input><br></br>
+                    <input id='formButton'type="button" value='Want To Add A Haunted Location?' onClick={this.create}></input>
                 </form>
             </div></>
         )

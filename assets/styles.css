@@ -4,6 +4,7 @@
 body{
     background-image: url(haunted.jpg);
     background-size: cover;
+    background-attachment: fixed;
 }
 
 #placeList{
@@ -13,9 +14,45 @@ body{
 
 .place{
     padding: 5px;
-    height: 50px;
+    height: 70px;
     margin-top: 10px;
     margin-right: 5px;
     text-align: center;
-    flex: 1 0 200px;
+    flex: 1 0 400px;
+    color: green;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 20pt;
+}
+.removeButton {
+    background-color: green;
+}
+
+h1{
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    color: green;
+    font-size: 40pt;
+}
+
+#form{
+    margin: 1rem;
+}
+
+label{
+    color: green;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 20pt;
+}
+.inputBox{
+    background-color: lightgreen;
+}
+
+#formButton{
+    margin-top: 1rem;
+    color: green;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    background-color: green;
 }
