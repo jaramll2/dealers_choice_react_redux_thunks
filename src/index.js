@@ -31,14 +31,14 @@ class App extends Component{
         const places = this.props.places;
 
         return(
-            <><div>
-                <ul>
+            <><div id = 'placeList'>
+                
                     {places.map(place => {
-                        return (<li key={place.id}> {place.name} <br></br> 
+                        return (<span className='place' key={place.id}> {place.name} <br></br> 
                             <button onClick={()=> this.destroy(place)}>Proven Not Haunted - Remove</button>
-                         </li>);
+                         </span>);
                     })}
-                </ul>
+               
             </div>
             
             <div id="form">

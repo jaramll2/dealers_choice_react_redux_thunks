@@ -9,6 +9,8 @@ app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+app.use('/assets',express.static(path.join(__dirname, './assets')));
+
 app.get('/api/places', async(req,res,next)=>{
     try{
         const places = await Place.findAll();

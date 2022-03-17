@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/bill_db',{
-    logging: false,
-  });
+const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/bill_db',{force: true});
 
 
 const Place = db.define('places',{

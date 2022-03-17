@@ -1,0 +1,21 @@
+*{
+    text-align: center;
+}
+body{
+    background-image: url(haunted.jpg);
+    background-size: cover;
+}
+
+#placeList{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.place{
+    padding: 5px;
+    height: 50px;
+    margin-top: 10px;
+    margin-right: 5px;
+    text-align: center;
+    flex: 1 0 200px;
+}

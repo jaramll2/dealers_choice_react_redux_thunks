@@ -1,6 +1,13 @@
 ## createdb acme-react-redux
 
 ## Heroku Link: https://jaramll3-react-thunks.herokuapp.com/
+
+## To Dos For the Future:
+* Fix CSS to have created elements display in set positions
+* Include a link to let viewer read about haunted place.
+* Error checking when creating new item
+* Incorporate scrolls to keep form in set place
+
 # Guidelines:
 * build a simple Sequelize model and seed some data when the express application starts
 * build an express api GET route which can be used by the client to return data from your model
