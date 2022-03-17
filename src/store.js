@@ -54,7 +54,6 @@ const deletePlace = (place)=>{
     }
 };
 
-//create store
 const store = createStore(reducer,applyMiddleware(thunk));
 
 export default store;

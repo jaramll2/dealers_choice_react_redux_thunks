@@ -1,4 +1,6 @@
 ## createdb acme-react-redux
+
+## Heroku Link: https://jaramll3-react-thunks.herokuapp.com/
 # Guidelines:
 * build a simple Sequelize model and seed some data when the express application starts
 * build an express api GET route which can be used by the client to return data from your model
